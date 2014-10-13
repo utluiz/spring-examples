@@ -1,0 +1,195 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 100px;
+}
+
+#base p {
+	margin: 8px 10px 8px 10px;
+}
+
+a img, button img {
+	padding: 0;
+	vertical-align: text-top;
+	margin: 0;
+}
+
+/**********************************************************
+	LOGIN
+**********************************************************/
+#bem-vindo {
+	margin: 0;
+	padding: 0;
+	padding-top: 11px;
+}
+#botao-deslogar {
+	vertical-align: text-bottom;
+	margin-left: 15px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	margin-top: 8px;
+}
+
+#loginform {
+	margin: 0;
+	padding: 0;
+	padding-top: 9px;
+}
+#loginform button {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin: 0;
+}
+#loginform input {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	margin: 0;
+}
+#loginform label {
+	color: #BBBBBB;
+	vertical-align: bottom;
+	padding-left: 10px;
+	margin-bottom: 2px;
+}
+
+/**********************************************************
+	FILTRO
+**********************************************************/
+
+#filtro {
+	padding: 15px 0;
+}
+#filtro input, #filtro select {
+	margin-right: 10px;
+}
+
+#filtro h4 {
+	margin-bottom: 10px;
+}
+
+input[type="date"] {
+	text-align: center;
+}
+
+
+#filtro * {
+	font-size: 12px;
+}
+#filtro label {
+	font-size: 11px;
+}
+
+/**********************************************************
+	TABELA
+**********************************************************/
+
+.direita {
+	text-align: right !important;
+}
+.centro {
+	text-align: center !important;
+}
+.esquerda {
+	text-align: left !important;
+}
+
+.nobr {
+	white-space: nowrap;
+	padding: 0;
+}
+
+#tabela_entradas th a {
+	display: block;
+}
+
+#tabela_entradas th a:hover {
+	text-decoration: none;
+}
+
+#tabela_entradas td {
+	vertical-align: middle;
+}
+
+.asc a {
+	background-image: url("../img/sort_az_descending.png");
+	background-position: right center;
+	background-repeat: no-repeat;
+	padding-right: 20px;
+}
+
+.desc a{
+	background-image: url("../img/sort_az_ascending.png");
+	background-position: right center;
+	background-repeat: no-repeat;
+	display: block;
+	padding-right: 20px;
+}
+
+textarea#assunto {
+	height: 150px;
+}
+
+.conteudo_grande {
+	overflow: auto;
+	max-width: 350px;
+	max-height: 50px;
+}
+
+.conteudo_grande_menor {
+	overflow: auto;
+	max-width: 200px;
+	max-height: 50px;
+}
+
+/**********************************************************
+	BASE TABELA
+**********************************************************/
+
+#botao-relatorio {
+	float: right;
+}
+#botao-relatorio-log {
+	float: right;
+	padding-right: 10px;
+}
+
+/**********************************************************
+	FORM ENTRADA
+**********************************************************/
+
+#anexos h4 {
+	margin-bottom: 10px;
+}
+
+#voltar_entrada {
+	margin-left: 30px;
+}
+
+/**********************************************************
+	ANEXOS
+**********************************************************/
+
+.description {
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+	font-size: 12px !important;
+	margin: 0 !important;
+}
+
+.hideinput {
+	background: none !important;
+	border: none !important; 
+	vertical-align: middle !important;
+	box-shadow: none !important;
+	margin-right: 2px !important;
+}
+
+.hideinput:hover {
+	-moz-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.4);
+  	-webkit-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.4);
+	box-shadow: inset 0px 0px 5px rgba(0,0,0,0.4);
+}
+
+#files th, #files td {
+	font-size: 12px;
+	vertical-align: middle;
+}
