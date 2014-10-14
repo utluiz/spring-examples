@@ -1,13 +1,4 @@
-/**
- * Autbank Projetos e Consultoria Ltda.
- * <br>
- * Criado em 10/09/2012 - 15:42:10
- * <br>
- * @version $Revision$ de $Date$<br>
- *           por $Author$<br>
- * @author luizricardo<br>
- */
-package br.com.autbank.abutils.agendavisitas.models;
+package br.com.starcode.specification.domain;
 
 
 public enum TipoAcao {

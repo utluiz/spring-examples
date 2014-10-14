@@ -1,65 +1,17 @@
-/**
- * Autbank Projetos e Consultoria Ltda.
- * <br>
- * Criado em 21/03/2012 - 15:35:45
- * <br>
- * @version $Revision$ de $Date$<br>
- *           por $Author$<br>
- * @author luizricardo<br>
- */
-package br.com.autbank.abutils.agendavisitas.models;
+package br.com.starcode.specification.domain;
 
 import java.io.Serializable;
-import java.text.MessageFormat;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.TypedQuery;
-
-import br.com.autbank.abutils.agendavisitas.utils.JPA;
-import br.com.autbank.abutils.utils.dt.Data;
-
-
-@Entity
-@Table(name = "log_acao")
 public class LogAcao implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long id;
-			
-	@Column(name = "tipo_acao", length = 1)
 	public String tipoAcao;
-	
-	@Column(name = "tipo_item", length = 1)
 	public String tipoItem;
-	
-	@Column(name = "id_item")
 	public long idItem;
-	
-	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "usuario", referencedColumnName = "login")
 	public Analista usuario;
-	
-	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "analista", referencedColumnName = "login")
 	public Analista analista;
-
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date data;
-	
-	@Column(length = 1000)
 	public String descricao;
 	
 	public LogAcao() {
@@ -125,7 +77,7 @@ public class LogAcao implements Serializable {
 		this.descricao = descricao;
 	}
 	
-	public static List<LogAcao> list(FiltroLogAcao filtro) {
+	/*public static List<LogAcao> list(FiltroLogAcao filtro) {
 		
 		TypedQuery<LogAcao> q = JPA.em().createQuery(
 				"select la from LogAcao la " +
@@ -184,6 +136,6 @@ public class LogAcao implements Serializable {
 		JPA.em().persist(logAcao);
 		JPA.em().flush();
 		
-	}
+	}*/
 	
 }

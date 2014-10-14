@@ -1,55 +1,15 @@
-/**
- * Autbank Projetos e Consultoria Ltda.
- * <br>
- * Criado em 21/03/2012 - 15:35:45
- * <br>
- * @version $Revision$ de $Date$<br>
- *           por $Author$<br>
- * @author luizricardo<br>
- */
-package br.com.autbank.abutils.agendavisitas.models;
+package br.com.starcode.specification.domain;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NoResultException;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.TypedQuery;
-
-import br.com.autbank.abutils.agendavisitas.utils.JPA;
-import br.com.autbank.abutils.utils.FileUtil;
-import br.com.autbank.abutils.webapp.fw.UploadedFile;
-
-@Entity
-@Table(name="anexo_temporario")
 public class AnexoTemporario implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long id;
-	
 	public long transacao;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	//@Formats.DateTime(pattern = "dd/MM/yyyy HH:mm:ss")
 	public Date data;
-	
-	@Column(length = 250, name = "nome_arquivo")
 	public String nomeArquivo;
-	
-	@Column(length = 255)
 	public String descricao;
 	
 	public AnexoTemporario() {
@@ -109,7 +69,7 @@ public class AnexoTemporario implements Serializable {
 		
 	}
 
-	public static List<AnexoTemporario> list(Long transacao) {
+	/*public static List<AnexoTemporario> list(Long transacao) {
 		
 		TypedQuery<AnexoTemporario> q = JPA.em().createQuery(
 				"select at from AnexoTemporario at " +
@@ -188,10 +148,10 @@ public class AnexoTemporario implements Serializable {
 		
 	}
 	
-	/**
+	*//**
 	 * Limpa anexos temporários antigos (sujeira).
 	 * Deleta tudo que for mais antigo que um dia.
-	 */
+	 *//*
 	public static void clear() {
 		
 		TypedQuery<AnexoTemporario> q = JPA.em().createQuery(
@@ -242,6 +202,6 @@ public class AnexoTemporario implements Serializable {
 			
 		}
 		
-	}
+	}*/
 	
 }

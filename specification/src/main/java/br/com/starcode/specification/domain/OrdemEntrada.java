@@ -1,13 +1,4 @@
-/**
- * Autbank Projetos e Consultoria Ltda.
- * <br>
- * Criado em 26/03/2012 - 10:57:59
- * <br>
- * @version $Revision$ de $Date$<br>
- *           por $Author$<br>
- * @author luizricardo<br>
- */
-package br.com.autbank.abutils.agendavisitas.models;
+package br.com.starcode.specification.domain;
 
 
 public class OrdemEntrada {

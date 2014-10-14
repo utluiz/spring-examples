@@ -1,60 +1,16 @@
-/**
- * Autbank Projetos e Consultoria Ltda.
- * <br>
- * Criado em 21/03/2012 - 15:35:45
- * <br>
- * @version $Revision$ de $Date$<br>
- *           por $Author$<br>
- * @author luizricardo<br>
- */
-package br.com.autbank.abutils.agendavisitas.models;
+package br.com.starcode.specification.domain;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NoResultException;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.TypedQuery;
-
-import br.com.autbank.abutils.agendavisitas.utils.JPA;
-import br.com.autbank.abutils.utils.FileUtil;
-import br.com.autbank.abutils.webapp.fw.UploadedFile;
-
-
-@Entity
 public class Anexo implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long id;
-	
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date data;
-	
-	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "analista", referencedColumnName = "login")
 	public Analista analista;
-	
-	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "entrada", referencedColumnName = "id")
 	public Entrada entrada;
-	
-	@Column(length = 250, name = "nome_arquivo")
 	public String nomeArquivo;
-	
-	@Column(length = 255)
 	public String descricao;
 	
 	public Anexo() {
@@ -108,20 +64,16 @@ public class Anexo implements Serializable {
 	 * Retorna o local do arquivo no servidor
 	 */
 	public File getFile() {
-		
 		return new File(new File(Configuracao.get().getCaminhoAnexos(), Long.toString(getEntrada().getId())), getNomeArquivo());
-		
 	}
 
 	/**
 	 * Retorna o local do arquivo no servidor
 	 */
 	public static File getFile(Long entradaId, String nomeArquivo) {
-		
 		return new File(new File(Configuracao.get().getCaminhoAnexos(), Long.toString(entradaId)), nomeArquivo);
-		
 	}
-
+/*
 	public static List<Anexo> list(Long entradaId) {
 		
 		TypedQuery<Anexo> q = JPA.em().createQuery(
@@ -236,5 +188,5 @@ public class Anexo implements Serializable {
 		}
 		
 	}
-	
+	*/
 }

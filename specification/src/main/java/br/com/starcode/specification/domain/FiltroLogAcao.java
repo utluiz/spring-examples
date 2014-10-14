@@ -1,21 +1,10 @@
-/**
- * Autbank Projetos e Consultoria Ltda.
- * <br>
- * Criado em 26/03/2012 - 10:41:04
- * <br>
- * @version $Revision$ de $Date$<br>
- *           por $Author$<br>
- * @author luizricardo<br>
- */
-package br.com.autbank.abutils.agendavisitas.models;
+package br.com.starcode.specification.domain;
 
 import java.util.Calendar;
 
-import br.com.autbank.abutils.utils.dt.Data;
-import br.com.autbank.abutils.webapp.fw.Formulario;
+import br.com.starcode.specification.util.Data;
 
 
-@Formulario
 public class FiltroLogAcao {
 	
 	public String dataInicial;

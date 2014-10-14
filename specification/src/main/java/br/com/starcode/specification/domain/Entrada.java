@@ -1,67 +1,17 @@
-/**
- * Autbank Projetos e Consultoria Ltda.
- * <br>
- * Criado em 21/03/2012 - 15:35:45
- * <br>
- * @version $Revision$ de $Date$<br>
- *           por $Author$<br>
- * @author luizricardo<br>
- */
-package br.com.autbank.abutils.agendavisitas.models;
+package br.com.starcode.specification.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NoResultException;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.TypedQuery;
-
-import br.com.autbank.abutils.agendavisitas.utils.JPA;
-import br.com.autbank.abutils.utils.dt.Data;
-import br.com.autbank.abutils.webapp.fw.Formulario;
-
-
-@Entity
-@Formulario
 public class Entrada implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long id;
-	
-	@Temporal(TemporalType.DATE)
 	public Date data;
-	
-	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "analista", referencedColumnName = "login")
 	public Analista analista;
-	
-	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "cliente", referencedColumnName = "codcliente")
 	public Cliente cliente;
-	
-	@OneToMany(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "entrada", referencedColumnName = "id") 
-	@OrderBy("data")
 	public List<Anexo> anexos;
-	
-	@Column(length = 100)
 	public String periodo;
-	
-	@Column
 	public String assunto;
 	
 	public Entrada() {
@@ -127,7 +77,7 @@ public class Entrada implements Serializable {
 		
 	}
 	
-	public static List<Entrada> list(OrdemEntrada ordenacao, FiltroEntrada filtro) {
+/*	public static List<Entrada> list(OrdemEntrada ordenacao, FiltroEntrada filtro) {
 		
 		TypedQuery<Entrada> q = JPA.em().createQuery(
 				"select e from Entrada e " +
@@ -219,5 +169,5 @@ public class Entrada implements Serializable {
 		}
 		
 	}
-	
+*/	
 }

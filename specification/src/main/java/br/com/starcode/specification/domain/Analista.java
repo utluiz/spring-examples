@@ -1,53 +1,16 @@
-/**
- * Autbank Projetos e Consultoria Ltda.
- * <br>
- * Criado em 21/03/2012 - 15:35:45
- * <br>
- * @version $Revision$ de $Date$<br>
- *           por $Author$<br>
- * @author luizricardo<br>
- */
-package br.com.autbank.abutils.agendavisitas.models;
+package br.com.starcode.specification.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
-
-import br.com.autbank.abutils.agendavisitas.utils.JPA;
-import br.com.autbank.abutils.utils.dt.Texto;
-
-
-@Entity
 public class Analista implements Serializable {
 
-	@Id
-	@Column(name = "login", insertable = false, updatable = false)
 	public String login;
-	
-	@Column(name = "nome", insertable = false, updatable = false)
 	public String nome;
-
-	@Column(name = "email", insertable = false, updatable = false)
 	public String email;
-	
-	@Column(name = "tipo", insertable = false, updatable = false)
 	public int tipo;
-	
-	@Column(name = "perfil", insertable = false, updatable = false)
 	public int perfil;
-	
-	@Column(name = "disponibilidade", insertable = false, updatable = false)
 	public String disponibilidade;
-	
-	@Column(name = "opcao_notificacao", insertable = false, updatable = false)
 	public int notificacao;
-	
-	@Column(name = "indlider", insertable = false, updatable = false)
 	public String lider;
 	
 	public Analista() {
@@ -64,17 +27,17 @@ public class Analista implements Serializable {
 	/**
 	 * Apenas primeiro nome
 	 */
-	public String getNomeSimplificado() {
+	/*public String getNomeSimplificado() {
 		
 		String primeiroNome = nome.split("\\s")[0];
 		return Texto.apenasPrimeiraMaiuscula(primeiroNome);
 		
-	}
+	}*/
 
 	/**
 	 * Primeiro e último nome
 	 */
-	public String getNomeResumido() {
+	/*public String getNomeResumido() {
 		
 		String[] partesNome = nome.split("\\s");
 		String primeiroNome = Texto.apenasPrimeiraMaiuscula(partesNome[0]);
@@ -89,52 +52,38 @@ public class Analista implements Serializable {
 			
 		}
 		
-	}
+	}*/
 	
 	public String getEmail() {
-		
 		return email;
-		
 	}
 
 	public int getTipo() {
-		
 		return tipo;
-		
 	}
 
 	public int getPerfil() {
-		
 		return perfil;
-		
 	}
 
 	public boolean getDisponibilidade() {
-		
 		return "S".equals(disponibilidade);
-		
 	}
 	
 	public int getNotificacao() {
-		
 		return notificacao;
-		
 	}
 	
 	public boolean isLider() {
-		
 		return "S".equals(lider);
-		
 	}
 
-	public static Analista get(String login) {
+/*	public static Analista get(String login) {
 		
 		TypedQuery<Analista> q = JPA.em().createQuery("select a from Analista a where login = :login and disponibilidade = 'S'", Analista.class);
 		q.setParameter("login", login);
 		try {
-			
 			return q.getSingleResult();
-			
 		} catch (NoResultException e) {
 			
 			return null;
@@ -149,5 +98,5 @@ public class Analista implements Serializable {
 		return q.getResultList();
 		
 	}
-	
+*/	
 }
