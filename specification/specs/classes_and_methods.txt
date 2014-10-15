@@ -1,0 +1,44 @@
+Domain and model classes
+	- Usuario
+	- Entrada
+	- PrioridadeEntrada (enum)
+	- OrdenacaoEntrada
+	- FiltroEntrada
+
+DAOs
+	- UsuarioDao
+		- findByNomeUsuario(String nomeUsuario)
+		- atualizarUltimoAcesso(Integer id, Date data)
+	- EntradaDao
+		- findById(Integer id)
+		- listByFilter(FiltroEntrada filtro, OrdenacaoEntrada ordem)
+		- insert(Entrada)
+		- update(Entrada)
+		- delete(Entrada)
+
+Services
+	- UsuarioService
+		- autenticarUsuario(String nomeUsuario)
+	- EntradaService (validações)
+		- findById(Integer id)
+		- search(FiltroEntrada filtro, OrdenacaoEntrada ordem)
+		- insert(Entrada)
+		- update(Entrada)
+		- delete(Entrada)
+	
+Controllers
+	- MainController
+		- / (home - GET)
+		- /sobre (GET)
+	- LoginController
+		- /login (autenticar - POST - redireciona para /entradas)
+		- /logout (sair - POST - redireciona para /)
+	- EntradaController
+		- /entradas (listar - GET/POST)
+		- /entrada?new (incluir - GET/POST - redireciona para /entradas)
+		- /entrada/{id} (editar - GET/POST - redireciona para /entradas)
+		- /entrada/remover/{id} (remover - POST - redireciona para /entradas)
+		- /entrada/{id} (remover - DELETE - modal)
+
+Views
+	- Visibilidade dos menus

@@ -6,6 +6,27 @@
 	}
 }
 
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+/* 
+html, .full-height {
+	height: 100%;
+}
+body {
+	height: 100%;
+	min-height: 100%;
+}
+.container-fluid .full-height {
+	margin-bottom: 50px;
+} 
+*/
+footer {
+	text-align: center;
+	bottom: 0;
+}
+
 /* HOME */
 
 #login-form input {
