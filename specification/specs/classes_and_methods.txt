@@ -7,24 +7,24 @@ Domain and model classes
 
 DAOs
 	- UsuarioDao
-		- findByNomeUsuario(String nomeUsuario)
-		- atualizarUltimoAcesso(Integer id, Date data)
+		- Usuario findByNomeUsuario(String nomeUsuario)
+		- void atualizarUltimoAcesso(Integer id, Date data)
 	- EntradaDao
-		- findById(Integer id)
-		- listByFilter(FiltroEntrada filtro, OrdenacaoEntrada ordem)
-		- insert(Entrada)
-		- update(Entrada)
-		- delete(Entrada)
+		- Entrada findById(Integer id)
+		- List<Entrada> search(FiltroEntrada filtro, OrdenacaoEntrada ordem)
+		- void insert(Entrada entrada)
+		- int update(Entrada entrada) - retorna a quantidade de registros afetados
+		- int delete(Integer id)  - retorna a quantidade de registros afetados
 
 Services
 	- UsuarioService
-		- autenticarUsuario(String nomeUsuario)
+		- Usuario autenticarUsuario(String nomeUsuario)
 	- EntradaService (validações)
-		- findById(Integer id)
-		- search(FiltroEntrada filtro, OrdenacaoEntrada ordem)
-		- insert(Entrada)
-		- update(Entrada)
-		- delete(Entrada)
+		- Entrada findById(Integer id)
+		- List<Entrada> search(FiltroEntrada filtro, OrdenacaoEntrada ordem)
+		- void insert(Entrada entrada)
+		- int update(Entrada entrada)
+		- int delete(Integer id)
 	
 Controllers
 	- MainController

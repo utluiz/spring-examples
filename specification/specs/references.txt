@@ -1,0 +1,19 @@
+Bootstrap
+	http://bootswatch.com/united/
+	http://getbootstrap.com/css/
+	http://getbootstrap.com/components/
+	
+Spring Core
+	http://docs.spring.io/spring-framework/docs/current/spring-framework-reference/html/index.html
+	
+Spring Unit Testing 
+	http://docs.spring.io/spring-framework/docs/current/spring-framework-reference/html/testing.html
+	
+JdbcTemplate
+	http://docs.spring.io/spring-framework/docs/current/spring-framework-reference/html/jdbc.html#jdbc-core
+	
+Spring beans 
+	http://docs.spring.io/spring/docs/4.1.x/spring-framework-reference/html/beans.html#beans-java
+	
+Spring MVC
+	http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html
