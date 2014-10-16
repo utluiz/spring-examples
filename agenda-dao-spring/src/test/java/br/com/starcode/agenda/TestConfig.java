@@ -39,9 +39,9 @@ public class TestConfig {
 	@Primary
 	public DataSource dataSourceMySql() {
 		MysqlDataSource ds = new MysqlDataSource();
-		ds.setUrl("jdbc:mysql://localhost:3311/agenda");
+		ds.setUrl("jdbc:mysql://localhost/agenda");
 		ds.setUser("root");
-		ds.setPassword("root");
+		ds.setPassword("");
 		return ds;
 	}
 	
@@ -76,8 +76,8 @@ public class TestConfig {
 		PGPoolingDataSource source = new PGPoolingDataSource();
 		source.setUrl("jdbc:postgresql://localhost/agenda");
 		source.setUser("postgres");
+		source.setPassword("0");
 		source.setMaxConnections(10);
-//		source.setPassword("testpassword");
 		return source;
 	}
 	

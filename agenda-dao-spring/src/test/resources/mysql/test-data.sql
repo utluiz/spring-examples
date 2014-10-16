@@ -1,5 +1,9 @@
-truncate table usuario;
+SET FOREIGN_KEY_CHECKS = 0;
+
 truncate table entrada;
+truncate table usuario;
+
+SET FOREIGN_KEY_CHECKS = 1;
 
 insert into usuario (nome_usuario, senha, nome) values ('luiz', '123', 'Luiz Ricardo');
 

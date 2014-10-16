@@ -21,6 +21,7 @@ import br.com.starcode.agenda.dao.mapper.EntradaRowMapper;
 import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
+import br.com.starcode.agenda.util.DateUtil;
 
 @Repository
 @Qualifier("pg")
@@ -49,7 +50,7 @@ public class EntradaDaoPostgreSqlJdbcTemplateImpl implements EntradaDao {
 				PreparedStatement ps = con.prepareStatement(
 						"insert into entrada (horario, descricao, prioridade, id_usuario) "
 						+ "values (?, ?, ?, ?)", new String[] {"id"});
-				ps.setTimestamp(1, new Timestamp(entrada.getHorario().getTime()));
+				ps.setTimestamp(1, DateUtil.getTimestamp(entrada.getHorario()));
 				ps.setString(2, entrada.getDescricao());
 				ps.setString(3, entrada.getPrioridadeEntrada().getCode());
 				ps.setInt(4, entrada.getIdUsuario());

@@ -21,6 +21,7 @@ import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
 import br.com.starcode.agenda.domain.PrioridadeEntrada;
+import br.com.starcode.agenda.util.DateUtil;
 
 @Repository
 @Qualifier("mysql")
@@ -71,7 +72,7 @@ public class EntradaDaoMySqlImpl implements EntradaDao {
 			ps = con.prepareStatement(
 					"insert into entrada (horario, descricao, prioridade, id_usuario) "
 					+ "values (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-			ps.setTimestamp(1, new Timestamp(entrada.getHorario().getTime()));
+			ps.setTimestamp(1, DateUtil.getTimestamp(entrada.getHorario()));
 			ps.setString(2, entrada.getDescricao());
 			ps.setString(3, entrada.getPrioridadeEntrada().getCode());
 			ps.setInt(4, entrada.getIdUsuario());
@@ -102,7 +103,7 @@ public class EntradaDaoMySqlImpl implements EntradaDao {
 			con = ds.getConnection();
 			ps = con.prepareStatement(
 					"update entrada set horario=?, descricao=?, prioridade=? where id=?");
-			ps.setTimestamp(1, new Timestamp(entrada.getHorario().getTime()));
+			ps.setTimestamp(1, DateUtil.getTimestamp(entrada.getHorario()));
 			ps.setString(2, entrada.getDescricao());
 			ps.setString(3, entrada.getPrioridadeEntrada().getCode());
 			ps.setInt(4, entrada.getId());

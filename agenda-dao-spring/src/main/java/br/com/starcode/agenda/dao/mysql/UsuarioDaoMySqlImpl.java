@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.starcode.agenda.dao.UsuarioDao;
 import br.com.starcode.agenda.domain.Usuario;
+import br.com.starcode.agenda.util.DateUtil;
 
 @Repository
 @Qualifier("mysql")
@@ -61,7 +62,7 @@ public class UsuarioDaoMySqlImpl implements UsuarioDao {
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement("update usuario set ultimo_acesso = ? where id = ?");
-			ps.setTimestamp(1, new java.sql.Timestamp(data.getTime()));
+			ps.setTimestamp(1, DateUtil.getTimestamp(data));
 			ps.setInt(2, id);
 			ps.executeUpdate();
 		} catch (SQLException e) {

@@ -4,10 +4,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.starcode.agenda.domain.Entrada;
@@ -15,6 +17,7 @@ import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
 import br.com.starcode.agenda.domain.PrioridadeEntrada;
 
+@Ignore
 public abstract class AbstractEntradaTest {
 
 	protected EntradaDao entradaDao;
