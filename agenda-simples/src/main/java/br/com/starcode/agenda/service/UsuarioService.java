@@ -16,6 +16,9 @@ public class UsuarioService {
 
 	public Usuario autenticarUsuario(String nomeUsuario) {
 		Usuario usuario = usuarioDao.findByNomeUsuario(nomeUsuario);
+		if (usuario == null) {
+			throw new RuntimeException("Usuário não cadastrado!");
+		}
 		usuarioDao.atualizarUltimoAcesso(usuario.getId(), new Date());
 		return usuario;
 	}

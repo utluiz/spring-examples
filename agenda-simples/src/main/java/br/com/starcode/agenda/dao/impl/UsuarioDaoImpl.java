@@ -3,20 +3,16 @@ package br.com.starcode.agenda.dao.impl;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import br.com.starcode.agenda.dao.UsuarioDao;
-import br.com.starcode.agenda.dao.impl.mapper.UsuarioRowMapper;
+import br.com.starcode.agenda.dao.mapper.UsuarioRowMapper;
 import br.com.starcode.agenda.domain.Usuario;
 
 @Repository
-@Qualifier("template")
-@Primary
-public class UsuarioDaoMySqlJdbcTemplateImpl implements UsuarioDao {
+public class UsuarioDaoImpl implements UsuarioDao {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;

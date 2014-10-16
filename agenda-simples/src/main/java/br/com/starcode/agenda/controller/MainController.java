@@ -11,4 +11,9 @@ public class MainController {
 		return "home";
 	}
 	
+	@RequestMapping("/sobre")
+	public String sobre() {
+		return "sobre";
+	}
+	
 }

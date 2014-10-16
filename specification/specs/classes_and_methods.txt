@@ -18,7 +18,7 @@ DAOs
 
 Services
 	- UsuarioService
-		- Usuario autenticarUsuario(String nomeUsuario)
+		- Usuario autenticarUsuario(String nomeUsuario, String senha)
 	- EntradaService (validações)
 		- Entrada findById(Integer id)
 		- List<Entrada> search(FiltroEntrada filtro, OrdenacaoEntrada ordem)

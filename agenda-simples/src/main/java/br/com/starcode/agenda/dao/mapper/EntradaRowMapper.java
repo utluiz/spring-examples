@@ -1,4 +1,4 @@
-package br.com.starcode.agenda.dao.impl.mapper;
+package br.com.starcode.agenda.dao.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

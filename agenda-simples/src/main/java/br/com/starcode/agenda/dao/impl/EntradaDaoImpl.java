@@ -4,12 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -18,15 +15,14 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import br.com.starcode.agenda.dao.EntradaDao;
-import br.com.starcode.agenda.dao.impl.mapper.EntradaRowMapper;
+import br.com.starcode.agenda.dao.mapper.EntradaRowMapper;
 import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
+import br.com.starcode.agenda.util.DateUtil;
 
 @Repository
-@Qualifier("template")
-@Primary
-public class EntradaDaoMySqlJdbcTemplateImpl implements EntradaDao {
+public class EntradaDaoImpl implements EntradaDao {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -50,7 +46,7 @@ public class EntradaDaoMySqlJdbcTemplateImpl implements EntradaDao {
 				PreparedStatement ps = con.prepareStatement(
 						"insert into entrada (horario, descricao, prioridade, id_usuario) "
 						+ "values (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-				ps.setTimestamp(1, new Timestamp(entrada.getHorario().getTime()));
+				ps.setTimestamp(1, DateUtil.getTimestamp(entrada.getHorario()));
 				ps.setString(2, entrada.getDescricao());
 				ps.setString(3, entrada.getPrioridadeEntrada().getCode());
 				ps.setInt(4, entrada.getIdUsuario());

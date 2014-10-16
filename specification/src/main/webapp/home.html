@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-   <meta charset="utf-8">
+    <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Agenda pessoal é uma agenda online para organizar sua vida.">
@@ -37,15 +37,14 @@
           <a class="navbar-brand" href="home.html">Agenda Pessoal</a>
         </div>
         <div class="navbar-collapse collapse">
-          <form id="login-form" class="navbar-form navbar-right" role="form">
+          <form id="login-form" class="navbar-form navbar-right" role="form" action="entradas.html">
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+              <input type="text" name="nome-usuario" placeholder="Nome de usuário" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" name="senha" placeholder="Senha" class="form-control">
             </div>
-            <!-- <button type="submit" class="btn btn-success btn-sml">Entrar</button> -->
-            <a href="entradas.html" class="btn btn-success">Entrar <span class="glyphicon glyphicon-log-in"></span></a>
+            <button type="submit" class="btn btn-success">Entrar <span class="glyphicon glyphicon-log-in"></span></button>
           </form>
         </div>
       </div>
