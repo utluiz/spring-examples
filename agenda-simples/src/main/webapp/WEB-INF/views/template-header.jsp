@@ -43,8 +43,8 @@
           <!-- LOGIN -->
           <c:if test="${usuario == null}">
           <form id="login-form" class="navbar-form navbar-right" role="form" method="post" action="<c:url value="/login" />">
-          	<c:if test="${not empty erro}">
-            <p class="navbar-text bg-danger error-message">${erro}</p>
+          	<c:if test="${not empty erroLogin}">
+            <p class="navbar-text bg-danger error-message">${erroLogin}</p>
             </c:if>
             <div class="form-group">
               <input type="text" name="nome-usuario" placeholder="Nome de usuário" class="form-control">
@@ -59,9 +59,6 @@
           <c:if test="${usuario != null}">
        	  <ul class="nav navbar-nav">
             <li class="${ param.active == 'entradas' ? 'active' : ''}"><a href="<c:url value="/entradas" />">Entradas</a></li>
-            <c:if test="${ param.active == 'nova'}">
-            <li class="active"><p class="navbar-text">Nova Entrada</p></li>
-            </c:if>
             <li class="${ param.active == 'sobre' ? 'active' : ''}"><a href="<c:url value="/sobre" />">Sobre</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -74,3 +71,20 @@
     </div>
 
 	
+	<!-- MENSAGENS -->
+    <div class="container-fluid">
+    
+      <c:if test="${not empty param.erro or not empty erro}">
+	  <div class="alert alert-danger fade in text-center" role="alert">
+	    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Fechar</span></button>
+	    <strong>${param.erro}${erro}</strong>
+	  </div>
+      </c:if>
+      <c:if test="${not empty param.msg or not empty msg}">
+      <div class="alert alert-success fade in text-center" role="alert">
+	    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Fechar</span></button>
+	    <strong>${param.msg}${msg}</strong>
+	  </div>
+      </c:if>
+      
+    </div>
