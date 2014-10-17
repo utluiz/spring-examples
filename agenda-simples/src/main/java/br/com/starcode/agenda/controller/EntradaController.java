@@ -1,16 +1,21 @@
 package br.com.starcode.agenda.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.starcode.agenda.domain.Entrada;
@@ -19,6 +24,7 @@ import br.com.starcode.agenda.domain.OrdenacaoEntrada;
 import br.com.starcode.agenda.domain.PrioridadeEntrada;
 import br.com.starcode.agenda.domain.Usuario;
 import br.com.starcode.agenda.service.EntradaService;
+import br.com.starcode.agenda.util.DateUtil;
 
 @Controller
 public class EntradaController {
@@ -64,7 +70,8 @@ public class EntradaController {
 	
 	@RequestMapping(value="/entrada", method = RequestMethod.POST)
 	public ModelAndView confirmarNova(
-			@ModelAttribute("entrada") Entrada entrada,
+			Entrada entrada,
+			@RequestParam("hora") String horario,
 			HttpSession sessao) {
 		
 		try {
@@ -73,11 +80,13 @@ public class EntradaController {
 				throw new RuntimeException("Usuário não autenticado");
 			}
 			entrada.setIdUsuario(usuario.getId());
+			entrada.setHorario(DateUtil.mergeWithHour(entrada.getHorario(), horario));
+			
 			entradaService.insert(entrada);
 			return new ModelAndView("redirect:/entradas")
 					.addObject("msg", "Registro '" + entrada.getId() + "' atualizado com sucesso!");
 		} catch (Exception e) {
-			return new ModelAndView("redirect:/entradas")
+			return new ModelAndView("editar-entrada")
 					.addObject("erro", e.getMessage());
 		}
 		
@@ -85,7 +94,8 @@ public class EntradaController {
 	
 	@RequestMapping(value="/entrada/{id}", method = RequestMethod.POST)
 	public ModelAndView confirmarEdicao(
-			@ModelAttribute("entrada") Entrada entrada,
+			Entrada entrada,
+			@RequestParam("hora") String horario,
 			HttpSession sessao) {
 		
 		try {
@@ -94,12 +104,13 @@ public class EntradaController {
 				throw new RuntimeException("Usuário não autenticado");
 			}
 			entrada.setIdUsuario(usuario.getId());
+			entrada.setHorario(DateUtil.mergeWithHour(entrada.getHorario(), horario));
 			
 			entradaService.update(entrada);
 			return new ModelAndView("redirect:/entradas")
 					.addObject("msg", "Registro '" + entrada.getId() + "' atualizado com sucesso!");
 		} catch (Exception e) {
-			return new ModelAndView("redirect:/entradas")
+			return new ModelAndView("editar-entrada")
 					.addObject("erro", e.getMessage());
 		}
 		
@@ -117,6 +128,13 @@ public class EntradaController {
 					.addObject("erro", e.getMessage());
 		}
 		
+	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder webDataBinder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateFormat.setLenient(false);
+		webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
 	
 }
