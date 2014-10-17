@@ -7,7 +7,7 @@ public class Entrada {
 	private Integer id;
 	private Date horario;
 	private String descricao;
-	private PrioridadeEntrada prioridadeEntrada;
+	private Prioridade prioridade;
 	private Integer idUsuario;
 	
 	public Integer getId() {
@@ -28,11 +28,11 @@ public class Entrada {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public PrioridadeEntrada getPrioridadeEntrada() {
-		return prioridadeEntrada;
+	public Prioridade getPrioridade() {
+		return prioridade;
 	}
-	public void setPrioridadeEntrada(PrioridadeEntrada prioridadeEntrada) {
-		this.prioridadeEntrada = prioridadeEntrada;
+	public void setPrioridade(Prioridade prioridade) {
+		this.prioridade = prioridade;
 	}
 	public Integer getIdUsuario() {
 		return idUsuario;

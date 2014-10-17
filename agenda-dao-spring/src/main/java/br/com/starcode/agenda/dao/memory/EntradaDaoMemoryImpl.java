@@ -19,7 +19,7 @@ import br.com.starcode.agenda.dao.EntradaDao;
 import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
-import br.com.starcode.agenda.domain.PrioridadeEntrada;
+import br.com.starcode.agenda.domain.Prioridade;
 import br.com.starcode.agenda.util.DateUtil;
 
 @Repository
@@ -44,7 +44,7 @@ public class EntradaDaoMemoryImpl implements EntradaDao {
 				e.setId(rs.getInt("id"));
 				e.setHorario(rs.getTimestamp("horario"));
 				e.setDescricao(rs.getString("descricao"));
-				e.setPrioridadeEntrada(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
+				e.setPrioridade(Prioridade.fromCode(rs.getString("prioridade")));
 				e.setIdUsuario(rs.getInt("id_usuario"));
 				return e;
 			} else {
@@ -74,7 +74,7 @@ public class EntradaDaoMemoryImpl implements EntradaDao {
 					+ "values (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			ps.setTimestamp(1, DateUtil.getTimestamp(entrada.getHorario()));
 			ps.setString(2, entrada.getDescricao());
-			ps.setString(3, entrada.getPrioridadeEntrada().getCode());
+			ps.setString(3, entrada.getPrioridade().getCode());
 			ps.setInt(4, entrada.getIdUsuario());
 			ps.executeUpdate();
 			ResultSet keyRs = ps.getGeneratedKeys();
@@ -105,7 +105,7 @@ public class EntradaDaoMemoryImpl implements EntradaDao {
 					"update entrada set horario=?, descricao=?, prioridade=? where id=?");
 			ps.setTimestamp(1, DateUtil.getTimestamp(entrada.getHorario()));
 			ps.setString(2, entrada.getDescricao());
-			ps.setString(3, entrada.getPrioridadeEntrada().getCode());
+			ps.setString(3, entrada.getPrioridade().getCode());
 			ps.setInt(4, entrada.getId());
 			return ps.executeUpdate();
 		} catch (SQLException e) {
@@ -194,7 +194,7 @@ public class EntradaDaoMemoryImpl implements EntradaDao {
 				e.setId(rs.getInt("id"));
 				e.setHorario(rs.getTimestamp("horario"));
 				e.setDescricao(rs.getString("descricao"));
-				e.setPrioridadeEntrada(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
+				e.setPrioridade(Prioridade.fromCode(rs.getString("prioridade")));
 				e.setIdUsuario(rs.getInt("id_usuario"));
 				lista.add(e);
 			}

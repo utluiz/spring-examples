@@ -14,7 +14,7 @@ import org.junit.Test;
 import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
-import br.com.starcode.agenda.domain.PrioridadeEntrada;
+import br.com.starcode.agenda.domain.Prioridade;
 
 @Ignore
 public abstract class AbstractEntradaTest {
@@ -28,7 +28,7 @@ public abstract class AbstractEntradaTest {
 		assertNotNull(entrada);
 		assertEquals("Curso Spring MVC", entrada.getDescricao());
 		assertEquals(new Integer(1), entrada.getIdUsuario());
-		assertEquals(PrioridadeEntrada.Importantissimo, entrada.getPrioridadeEntrada());
+		assertEquals(Prioridade.Importantissimo, entrada.getPrioridade());
 		
 	}
 	
@@ -40,7 +40,7 @@ public abstract class AbstractEntradaTest {
 		Entrada nova = new Entrada();
 		nova.setHorario(horario);
 		nova.setDescricao("descrição nova");
-		nova.setPrioridadeEntrada(PrioridadeEntrada.NadaDeMais);
+		nova.setPrioridade(Prioridade.NadaDeMais);
 		nova.setIdUsuario(1);
 		entradaDao.insert(nova);
 		
@@ -50,7 +50,7 @@ public abstract class AbstractEntradaTest {
 		assertEquals("descrição nova", entrada.getDescricao());
 		assertEquals(nova.getId(), entrada.getId());
 		assertEquals(new Integer(1), entrada.getIdUsuario());
-		assertEquals(PrioridadeEntrada.NadaDeMais, entrada.getPrioridadeEntrada());
+		assertEquals(Prioridade.NadaDeMais, entrada.getPrioridade());
 		assertEquals(
 				new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(horario), 
 				new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(entrada.getHorario()));

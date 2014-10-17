@@ -9,6 +9,7 @@ public class Usuario {
 	private String senha;
 	private String nome;
 	private Date ultimoAcesso;
+	
 	public Integer getId() {
 		return id;
 	}

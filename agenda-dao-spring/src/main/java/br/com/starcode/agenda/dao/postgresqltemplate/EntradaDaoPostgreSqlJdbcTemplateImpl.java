@@ -51,7 +51,7 @@ public class EntradaDaoPostgreSqlJdbcTemplateImpl implements EntradaDao {
 						+ "values (?, ?, ?, ?)", new String[] {"id"});
 				ps.setTimestamp(1, DateUtil.getTimestamp(entrada.getHorario()));
 				ps.setString(2, entrada.getDescricao());
-				ps.setString(3, entrada.getPrioridadeEntrada().getCode());
+				ps.setString(3, entrada.getPrioridade().getCode());
 				ps.setInt(4, entrada.getIdUsuario());
 				return ps;
 			}
@@ -64,7 +64,7 @@ public class EntradaDaoPostgreSqlJdbcTemplateImpl implements EntradaDao {
 				"update entrada set horario=?, descricao=?, prioridade=? where id=?",
 				entrada.getHorario(),
 				entrada.getDescricao(),
-				entrada.getPrioridadeEntrada().getCode(),
+				entrada.getPrioridade().getCode(),
 				entrada.getId());
 	}
 

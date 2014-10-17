@@ -16,7 +16,7 @@ public class EntradaRowMapper implements RowMapper<Entrada> {
 		e.setId(rs.getInt("id"));
 		e.setHorario(rs.getTimestamp("horario"));
 		e.setDescricao(rs.getString("descricao"));
-		e.setPrioridadeEntrada(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
+		e.setPrioridade(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
 		e.setIdUsuario(rs.getInt("id_usuario"));
 		return e;
 	}

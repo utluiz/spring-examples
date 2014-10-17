@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import br.com.starcode.agenda.domain.Entrada;
-import br.com.starcode.agenda.domain.PrioridadeEntrada;
+import br.com.starcode.agenda.domain.Prioridade;
 
 public class EntradaRowMapper implements RowMapper<Entrada> {
 
@@ -16,7 +16,7 @@ public class EntradaRowMapper implements RowMapper<Entrada> {
 		e.setId(rs.getInt("id"));
 		e.setHorario(rs.getTimestamp("horario"));
 		e.setDescricao(rs.getString("descricao"));
-		e.setPrioridadeEntrada(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
+		e.setPrioridade(Prioridade.fromCode(rs.getString("prioridade")));
 		e.setIdUsuario(rs.getInt("id_usuario"));
 		return e;
 	}

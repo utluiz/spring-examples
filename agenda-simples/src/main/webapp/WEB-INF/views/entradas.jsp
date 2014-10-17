@@ -77,9 +77,9 @@
 	          </thead>
 	          <tbody>
 	          	<c:forEach items="${entradas}" var="entrada">
-	            <tr>
+	            <tr class="${entrada.prioridade.code == 'I' ? 'danger' : '' }${entrada.prioridade.code == 'A' ? 'warning' : '' }${entrada.prioridade.code == 'P' ? 'success' : '' }">
 	              <td class="text-center">${entrada.id}</td>
-	              <td>${entrada.horario}</td>
+	              <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${entrada.horario}" /></td>
 	              <td>${entrada.descricao}</td>
 	              <td class="text-right">
 			        <a href="<c:url value="/entrada/${entrada.id}"/>" title="Editar Entrada" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -87,60 +87,6 @@
 	              </td>
 	            </tr>
 	            </c:forEach>
-	            <tr class="warning">
-	              <td class="text-center">2</td>
-	              <td>13/10/2014 22:00</td>
-	              <td>Aniversário de casamento</td>
-	              <td class="text-right">
-			        <a href="editar-entrada.html" title="Editar Entrada" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-	   				<a href="#" title="Excluir Entrada" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
-	              </td>
-	            </tr>
-	            <tr class="danger">
-	              <td class="text-center">3</td>
-	              <td>13/10/2014 22:00</td>
-	              <td>Jantar com amigos</td>
-	              <td class="text-right">
-			        <a href="editar-entrada.html" title="Editar Entrada" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-	   				<a href="#" title="Excluir Entrada" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
-	              </td>
-	            </tr>
-	            <tr class="success">
-	              <td class="text-center">4</td>
-	              <td>13/10/2014 22:00</td>
-	              <td>Jantar com amigos</td>
-	              <td class="text-right">
-			        <a href="editar-entrada.html" title="Editar Entrada" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-	   				<a href="#" title="Excluir Entrada" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
-	              </td>
-	            </tr>
-	            <tr>
-	              <td class="text-center">5</td>
-	              <td>13/10/2014 22:00</td>
-	              <td>Jantar com amigos</td>
-	              <td class="text-right">
-			        <a href="editar-entrada.html" title="Editar Entrada" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-	   				<a href="#" title="Excluir Entrada" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
-	              </td>
-	            </tr>
-	            <tr>
-	              <td class="text-center">6</td>
-	              <td>13/10/2014 22:00</td>
-	              <td>Jantar com amigos</td>
-	              <td class="text-right">
-			        <a href="editar-entrada.html" title="Editar Entrada" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-	   				<a href="#" title="Excluir Entrada" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
-	              </td>
-	            </tr>
-	            <tr>
-	              <td class="text-center">7</td>
-	              <td>13/10/2014 22:00</td>
-	              <td>Jantar com amigos</td>
-	              <td class="text-right">
-			        <a href="editar-entrada.html" title="Editar Entrada" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-	   				<a href="#" title="Excluir Entrada" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
-	              </td>
-	            </tr>
 	          </tbody>
 	        </table>
 	     </div>    

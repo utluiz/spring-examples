@@ -35,7 +35,7 @@ public class EntradaDaoTest {
 		assertNotNull(entrada);
 		assertEquals("Curso Spring MVC", entrada.getDescricao());
 		assertEquals(new Integer(1), entrada.getIdUsuario());
-		assertEquals(PrioridadeEntrada.Importantissimo, entrada.getPrioridadeEntrada());
+		assertEquals(PrioridadeEntrada.Importantissimo, entrada.getPrioridade());
 		
 	}
 	
@@ -47,7 +47,7 @@ public class EntradaDaoTest {
 		Entrada nova = new Entrada();
 		nova.setHorario(horario);
 		nova.setDescricao("descrição nova");
-		nova.setPrioridadeEntrada(PrioridadeEntrada.NadaDeMais);
+		nova.setPrioridade(PrioridadeEntrada.NadaDeMais);
 		nova.setIdUsuario(1);
 		entradaDao.insert(nova);
 		
@@ -57,7 +57,7 @@ public class EntradaDaoTest {
 		assertEquals("descrição nova", entrada.getDescricao());
 		assertEquals(nova.getId(), entrada.getId());
 		assertEquals(new Integer(1), entrada.getIdUsuario());
-		assertEquals(PrioridadeEntrada.NadaDeMais, entrada.getPrioridadeEntrada());
+		assertEquals(PrioridadeEntrada.NadaDeMais, entrada.getPrioridade());
 		assertEquals(horario, entrada.getHorario());
 		
 		//atualiza

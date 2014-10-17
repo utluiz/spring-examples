@@ -39,7 +39,7 @@ public class EntradaDao {
 				e.setId(rs.getInt("id"));
 				e.setHorario(rs.getTimestamp("horario"));
 				e.setDescricao(rs.getString("descricao"));
-				e.setPrioridadeEntrada(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
+				e.setPrioridade(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
 				e.setIdUsuario(rs.getInt("id_usuario"));
 				return e;
 			} else {
@@ -70,7 +70,7 @@ public class EntradaDao {
 					+ "values (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 			ps.setTimestamp(1, new Timestamp(entrada.getHorario().getTime()));
 			ps.setString(2, entrada.getDescricao());
-			ps.setString(3, entrada.getPrioridadeEntrada().getCode());
+			ps.setString(3, entrada.getPrioridade().getCode());
 			ps.setInt(4, entrada.getIdUsuario());
 			ps.executeUpdate();
 			ResultSet keyRs = ps.getGeneratedKeys();
@@ -101,7 +101,7 @@ public class EntradaDao {
 					"update entrada set horario=?, descricao=?, prioridade=? where id=?");
 			ps.setTimestamp(1, new Timestamp(entrada.getHorario().getTime()));
 			ps.setString(2, entrada.getDescricao());
-			ps.setString(3, entrada.getPrioridadeEntrada().getCode());
+			ps.setString(3, entrada.getPrioridade().getCode());
 			ps.setInt(4, entrada.getId());
 			return ps.executeUpdate();
 		} catch (SQLException e) {
@@ -190,7 +190,7 @@ public class EntradaDao {
 				e.setId(rs.getInt("id"));
 				e.setHorario(rs.getTimestamp("horario"));
 				e.setDescricao(rs.getString("descricao"));
-				e.setPrioridadeEntrada(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
+				e.setPrioridade(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
 				e.setIdUsuario(rs.getInt("id_usuario"));
 				lista.add(e);
 			}

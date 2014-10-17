@@ -13,25 +13,27 @@
       <form class="form-horizontal" id="form-editar-entrada" action="<c:url value="/entradas" />" method="post">
 		  <fieldset>
 		    <legend>Entrada</legend>
+		    <c:if test="${not empty entrada.id}">
 		    <div class="form-group">
 		      <label for="codigo" class="col-lg-2 control-label">Código</label>
 		      <div class="col-lg-2">
-		        <input type="text" class="form-control" name="codigo" id="codigo" value="1">
+		        <input type="text" class="form-control" name="entrada.codigo" id="codigo" value="${entrada.id}" disabled>
 		      </div>
 		    </div>
+		    </c:if>
 		    <div class="form-group">
 		      <label for="inputPassword" class="col-lg-2 control-label">Data</label>
 		      <div class="col-lg-2">
-		        <input type="date" class="form-control" name="data" id="data" placeholder="Data">
+		        <input type="date" class="form-control" name="data" id="data" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${entrada.horario}" />" placeholder="Data">
 		      </div>
 		      <div class="col-lg-2">
-		        <input type="time" class="form-control" name="hora" id="hora" placeholder="Hora">
+		        <input type="time" class="form-control" name="hora" id="hora" value="<fmt:formatDate pattern="hh:mm" value="${entrada.horario}" />" placeholder="Hora">
 		      </div>
 		    </div>
 		    <div class="form-group">
 		      <label for="textArea" class="col-lg-2 control-label">Descrição</label>
 		      <div class="col-lg-10">
-		        <textarea class="form-control" rows="3" id="textArea"></textarea>
+		        <textarea class="form-control" rows="3" id="textArea">${entrada.descricao}</textarea>
 		        <span class="help-block">O que você vai ou precisa fazer?</span>
 		      </div>
 		    </div>
@@ -39,10 +41,10 @@
 		      <label for="select" class="col-lg-2 control-label">Prioridade</label>
 		      <div class="col-lg-2">
 		        <select class="form-control" id="select">
-		          <option>Passatempo</option>
-		          <option>Nada de mais</option>
-		          <option>Precisa Atenção</option>
-		          <option>Importantíssimo</option>
+		          <option value="Passatempo"${entrada.prioridade.code == 'P' ? ' selected' : '' }>Passatempo</option>
+		          <option value="NadaDeMais"${entrada.prioridade.code == 'N' ? ' selected' : '' }>Nada de mais</option>
+		          <option value="PrecisaAtencao"${entrada.prioridade.code == 'A' ? ' selected' : '' }>Precisa Atenção</option>
+		          <option value="Importantissimo"${entrada.prioridade.code == 'I' ? ' selected' : '' }>Importantíssimo</option>
 		        </select>
 		      </div>
 		    </div>
