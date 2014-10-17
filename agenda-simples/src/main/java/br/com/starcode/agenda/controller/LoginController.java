@@ -29,7 +29,7 @@ public class LoginController {
 			sessao.setAttribute("usuario", usuario);
 			return "redirect:/entradas";
 		} catch (Exception e) {
-			model.addAttribute("erro", e.getMessage());
+			model.addAttribute("erroLogin", e.getMessage());
 			return "home";
 		}
 	}
