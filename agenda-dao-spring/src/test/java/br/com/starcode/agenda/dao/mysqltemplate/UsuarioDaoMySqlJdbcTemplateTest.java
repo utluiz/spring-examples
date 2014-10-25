@@ -7,12 +7,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.starcode.agenda.TestConfig;
+import br.com.starcode.agenda.MySqlTestConfig;
 import br.com.starcode.agenda.dao.AbstractUsuarioTest;
 import br.com.starcode.agenda.dao.UsuarioDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={TestConfig.class})
+@ContextConfiguration(classes={MySqlTestConfig.class})
 @Profile("test")
 @Transactional
 public class UsuarioDaoMySqlJdbcTemplateTest extends AbstractUsuarioTest {

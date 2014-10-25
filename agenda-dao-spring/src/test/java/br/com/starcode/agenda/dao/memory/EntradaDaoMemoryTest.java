@@ -8,12 +8,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.starcode.agenda.TestConfig;
+import br.com.starcode.agenda.MemoryTestConfig;
 import br.com.starcode.agenda.dao.AbstractEntradaTest;
 import br.com.starcode.agenda.dao.EntradaDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={TestConfig.class})
+@ContextConfiguration(classes={MemoryTestConfig.class})
 @Profile("test")
 @Transactional
 public class EntradaDaoMemoryTest extends AbstractEntradaTest {

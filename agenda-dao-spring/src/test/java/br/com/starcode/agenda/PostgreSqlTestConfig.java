@@ -10,65 +10,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-
 @Configuration
-@ComponentScan(basePackages = {"br.com.starcode.agenda"})
-public class TestConfig {
-	
-	@Bean 
-	@Qualifier("h2") 
-	public DataSource dataSourceH2() {
-		return new EmbeddedDatabaseBuilder()
-			.setType(EmbeddedDatabaseType.H2)
-			.addScript("classpath:/h2/schema.sql")
-			.addScript("classpath:/h2/test-data.sql")
-			.build();
-	}
-	
-	@Bean 
-	@Qualifier("mysql") 
-	@Primary
-	public DataSource dataSourceMySql() {
-		MysqlDataSource ds = new MysqlDataSource();
-		ds.setUrl("jdbc:mysql://localhost/agenda");
-		ds.setUser("root");
-		ds.setPassword("");
-		return ds;
-	}
-	
-	@Bean
-	@Qualifier("mysql")
-	@Primary
-	JdbcTemplate getTemplate(@Qualifier("mysql") DataSource dataSource) {
-		return new JdbcTemplate(dataSource);
-	}
-	
-	@Bean
-	@Qualifier("mysql")
-	public DataSourceInitializer dataSourceInitializerMySql(
-			@Qualifier("mysql") final DataSource dataSource,
-			@Value("classpath:mysql/schema.sql") Resource schemaMySql,
-			@Value("classpath:mysql/test-data.sql") Resource dataMySql) {
-		
-		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-		populator.addScript(schemaMySql);
-		populator.addScript(dataMySql);
-		//DatabasePopulatorUtils.execute(populator, ds);
-		
-	    final DataSourceInitializer initializer = new DataSourceInitializer();
-	    initializer.setDataSource(dataSource);
-	    initializer.setDatabasePopulator(populator);
-	    return initializer;
-	}
+@ComponentScan(basePackages = {
+		"br.com.starcode.agenda.dao.postgresqltemplate",
+		"br.com.starcode.agenda.dao.postgresqltemplate"})
+public class PostgreSqlTestConfig {
 	
 	@Bean 
 	@Qualifier("pg") 

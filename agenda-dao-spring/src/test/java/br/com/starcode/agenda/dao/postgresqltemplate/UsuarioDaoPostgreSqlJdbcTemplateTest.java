@@ -8,17 +8,17 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.starcode.agenda.TestConfig;
+import br.com.starcode.agenda.PostgreSqlTestConfig;
 import br.com.starcode.agenda.dao.AbstractUsuarioTest;
 import br.com.starcode.agenda.dao.UsuarioDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={TestConfig.class})
+@ContextConfiguration(classes={PostgreSqlTestConfig.class})
 @Profile("test")
 @Transactional
 public class UsuarioDaoPostgreSqlJdbcTemplateTest extends AbstractUsuarioTest {
 	
-	@Autowired
+	@Autowired(required=false)
 	@Qualifier("pg")
 	public void setUsuarioDao(UsuarioDao usuarioDao) {
 		this.usuarioDao = usuarioDao;

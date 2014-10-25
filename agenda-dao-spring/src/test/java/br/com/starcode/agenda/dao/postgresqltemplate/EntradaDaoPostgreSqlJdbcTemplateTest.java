@@ -8,17 +8,17 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.starcode.agenda.TestConfig;
+import br.com.starcode.agenda.PostgreSqlTestConfig;
 import br.com.starcode.agenda.dao.AbstractEntradaTest;
 import br.com.starcode.agenda.dao.EntradaDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={TestConfig.class})
+@ContextConfiguration(classes={PostgreSqlTestConfig.class})
 @Profile("test")
 @Transactional
 public class EntradaDaoPostgreSqlJdbcTemplateTest extends AbstractEntradaTest {
 	
-	@Autowired
+	@Autowired(required=false)
 	@Qualifier("pg")
 	public void setEntradaDao(EntradaDao entradaDao) {
 		this.entradaDao = entradaDao;
