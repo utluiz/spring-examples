@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
@@ -33,82 +34,84 @@ public class EntradaController {
 	EntradaService entradaService;
 
 	@RequestMapping("/entradas")
-	public ModelAndView entradas(
+	ModelAndView entradas(
 			@ModelAttribute("filtro") FiltroEntrada filtro,
 			@ModelAttribute("ordem") OrdenacaoEntrada ordem) {
-		
 		List<Entrada> entradas = entradaService.search(filtro, ordem);
 		return new ModelAndView("entradas")
 			.addObject("entradas", entradas);
-		
 	}
 	
 	@RequestMapping(value="/entrada", params="new")
-	public ModelAndView nova() {
-		
+	ModelAndView nova() {
 		Entrada entrada = new Entrada();
 		entrada.setHorario(new Date());
 		entrada.setPrioridade(PrioridadeEntrada.NadaDeMais);
 		return new ModelAndView("editar-entrada")
 				.addObject("entrada", entrada);
-		
 	}
 
 	@RequestMapping(value="/entrada/{id}")
-	public ModelAndView editar(@PathVariable("id") Integer id) {
-		
-		Entrada entrada = entradaService.findById(id);
-		if (entrada == null) {
+	ModelAndView editar(
+			@PathVariable("id") Integer id, 
+			RedirectAttributes redirectAttributes) {
+		try {
+			Entrada entrada = entradaService.findById(id);
+			if (entrada == null) {
+				throw new Exception("Entrada '" + id + "' não encontrada para edição!");
+			}
 			return new ModelAndView("editar-entrada")
-				.addObject("erro", "Entrada '" + id + "' não encontrada para edição!");
-		} else {
-			return new ModelAndView("editar-entrada")
-				.addObject("entrada", entrada);
+			.addObject("entrada", entrada);
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("erro", e.getMessage());      
+			return new ModelAndView("redirect:/entradas");
 		}
-			
 	}
 	
 	@RequestMapping(value="/entrada", method = RequestMethod.POST)
-	public ModelAndView confirmarNova(
+	ModelAndView confirmarNova(
 			Entrada entrada,
 			@RequestParam("hora") String horario,
-			HttpSession sessao) {
-		
+			HttpSession sessao, 
+			RedirectAttributes redirectAttributes) {
 		try {
+			//prepare 
 			Usuario usuario = (Usuario) sessao.getAttribute("usuario");
 			if (usuario == null) {
 				throw new RuntimeException("Usuário não autenticado");
 			}
 			entrada.setIdUsuario(usuario.getId());
 			entrada.setHorario(DateUtil.mergeWithHour(entrada.getHorario(), horario));
-			
+			//insert 
 			entradaService.insert(entrada);
-			return new ModelAndView("redirect:/entradas")
-					.addObject("msg", "Registro '" + entrada.getId() + "' atualizado com sucesso!");
+			//success
+			redirectAttributes.addFlashAttribute("msg", "Registro '" + entrada.getId() + "' inserido com sucesso!");
+			return new ModelAndView("redirect:/entradas");
 		} catch (Exception e) {
 			return new ModelAndView("editar-entrada")
 					.addObject("erro", e.getMessage());
 		}
-		
 	}
 	
 	@RequestMapping(value="/entrada/{id}", method = RequestMethod.POST)
-	public ModelAndView confirmarEdicao(
+	ModelAndView confirmarEdicao(
 			Entrada entrada,
 			@RequestParam("hora") String horario,
-			HttpSession sessao) {
-		
+			HttpSession sessao,
+			RedirectAttributes redirectAttributes) {
 		try {
+			//prepared entrada
 			Usuario usuario = (Usuario) sessao.getAttribute("usuario");
 			if (usuario == null) {
 				throw new RuntimeException("Usuário não autenticado");
 			}
 			entrada.setIdUsuario(usuario.getId());
 			entrada.setHorario(DateUtil.mergeWithHour(entrada.getHorario(), horario));
-			
+			//update
 			entradaService.update(entrada);
-			return new ModelAndView("redirect:/entradas")
-					.addObject("msg", "Registro '" + entrada.getId() + "' atualizado com sucesso!");
+			//success message
+			redirectAttributes.addFlashAttribute("msg", "Registro '" + entrada.getId() + "' atualizado com sucesso!"); 
+			return new ModelAndView("redirect:/entradas");
 		} catch (Exception e) {
 			return new ModelAndView("editar-entrada")
 					.addObject("erro", e.getMessage());
@@ -117,21 +120,22 @@ public class EntradaController {
 	}
 	
 	@RequestMapping(value="/entrada/remover/{id}")
-	public ModelAndView remover(@PathVariable("id") Integer id) {
-		
+	ModelAndView remover(
+			@PathVariable("id") Integer id, 
+			RedirectAttributes redirectAttributes) {
 		try {
 			entradaService.delete(id);
-			return new ModelAndView("redirect:/entradas")
-					.addObject("msg", "Registro '" + id + "' não removido porque não foi encontrado!");
+			redirectAttributes.addFlashAttribute("msg", "Registro '" + id + "' removido com sucesso!");      
+			return new ModelAndView("redirect:/entradas");
 		} catch (Exception e) {
-			return new ModelAndView("redirect:/entradas")
-					.addObject("erro", e.getMessage());
+			redirectAttributes.addFlashAttribute("erro", e.getMessage());      
+			return new ModelAndView("redirect:/entradas");
 		}
 		
 	}
 	
 	@InitBinder
-	public void initBinder(WebDataBinder webDataBinder) {
+	void initBinder(WebDataBinder webDataBinder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		dateFormat.setLenient(false);
 		webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));

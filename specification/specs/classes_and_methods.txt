@@ -41,4 +41,34 @@ Controllers
 		- /entrada/{id} (remover - DELETE - modal)
 
 Views
-	- Visibilidade dos menus
+	- Template Header
+		- Caminhos de CSS devem estar com <c:url/>
+		- Link para a Home
+		- Visibilidade do Login
+		- "Entradas" deve aparecer somente depois do login
+		- Entrada ativa do menu
+		- Título dinâmico
+		- Mensagens de erro e sucesso
+		- Mensagemd e bom dia
+		- Link logout
+	- Template Footer
+		- Caminhos de Javascripts devem estar com <c:url/>
+		
+	- Home
+		- Incluir header
+		- Links
+		- Incluir footer
+		
+	- Sobre
+		- Incluir header e footer
+		
+	- Entradas
+		- Incluir header e footer
+		- Action e Valores do filtro, mais campos ocultos para a preservar ordenação
+		- Javascript para limpar filtro
+		- Url de ordenação para header da tabela, imagem de ordenação ascendente e descendente
+		- Link nova entrada
+		- Loop da tabela, cor da linha, valores das colunas, link para editar e remover
+		- Script para confirmação de remoção
+		
+	- Editar Entrada

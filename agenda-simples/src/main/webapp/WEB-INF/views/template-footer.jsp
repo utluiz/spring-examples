@@ -8,8 +8,8 @@
     </footer>
 	
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="<c:url value="/" />js/jquery.min.js"></script>
-	<script src="<c:url value="/" />bootstrap/js/bootstrap.min.js"></script>
-	<script src="<c:url value="/" />js/agenda.js"></script>
+	<script src="<c:url value="/js/jquery.min.js" />"></script>
+	<script src="<c:url value="/bootstrap/js/bootstrap.min.js" />"></script>
+	<script src="<c:url value="/js/agenda.js" />"></script>
 </body>
 </html>

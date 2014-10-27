@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Agenda pessoal é uma agenda online para organizar sua vida.">
@@ -14,10 +14,10 @@
 	<title>${param.title}</title>
 	
 	<!-- Bootstrap core CSS -->
-	<link href="<c:url value="/" />bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="<c:url value="/" />bootstrap/css/bootswatch.min.css" rel="stylesheet">
-	<link href="<c:url value="/" />css/agenda.css" rel="stylesheet">
-	<link rel="shortcut icon" type="image/png" href="<c:url value="/" />favicon.png"/>
+	<link href="<c:url value="/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
+	<link href="<c:url value="/bootstrap/css/bootswatch.min.css" />" rel="stylesheet">
+	<link href="<c:url value="/css/agenda.css" />" rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="<c:url value="/favicon.png" />"/>
 	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>

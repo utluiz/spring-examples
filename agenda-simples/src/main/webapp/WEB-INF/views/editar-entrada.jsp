@@ -34,7 +34,7 @@
 		    <div class="form-group">
 		      <label for="textArea" class="col-lg-2 control-label">Descrição</label>
 		      <div class="col-lg-10">
-		        <textarea class="form-control" rows="3" name="descricao" id="descricao">${entrada.descricao}</textarea>
+		        <textarea class="form-control" rows="3" name="descricao" id="descricao" maxlength="250">${entrada.descricao}</textarea>
 		        <span class="help-block">O que você vai ou precisa fazer?</span>
 		      </div>
 		    </div>

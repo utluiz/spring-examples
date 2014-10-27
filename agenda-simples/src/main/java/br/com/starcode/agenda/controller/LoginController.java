@@ -19,7 +19,7 @@ public class LoginController {
 	UsuarioService usuarioService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(
+	String login(
 			@RequestParam("nome-usuario") String nomeUsuario,
 			@RequestParam("senha") String senha,
 			HttpSession sessao,
@@ -35,7 +35,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/logout")
-	public String logout(HttpSession sessao) {
+	String logout(HttpSession sessao) {
 		sessao.invalidate();
 		return "redirect:/";
 	}

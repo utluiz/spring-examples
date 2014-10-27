@@ -20,17 +20,17 @@ public class OrdenacaoEntrada {
 	public void setOrdem(String ordem) {
 		this.ordem = ordem;
 	}
-
+	
+	public String getColunaDefault() {
+		return !"descricao".equals(coluna) ? "horario" : "descricao";
+	}
+	
+	public String getOrdemDefault() {
+		return !"desc".equals(ordem) ? "asc" : "desc";
+	}
+	
 	public String getOrderBy() {
-		String coluna = this.coluna;
-		if (!"desc".equals(coluna)) {
-			coluna = "horario";
-		}
-		String ordem = this.ordem;
-		if (!"desc".equals(ordem)) {
-			ordem = "asc";
-		}
-		return coluna + " " + ordem;
+		return getColunaDefault() + " " + getOrdemDefault();
 	}
 	
 }
