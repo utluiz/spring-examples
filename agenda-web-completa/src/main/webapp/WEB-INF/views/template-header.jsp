@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -26,7 +27,10 @@
 	<![endif]-->
 </head>
 <body>
-
+	<!-- RECUPERA USUARIO, SE LOGADO -->
+	<c:if test="${not empty pageContext.request.userPrincipal}">
+		<sec:authentication property="principal.usuario" var="usuario"/>
+	</c:if>
 	<!-- BARRA DE MENU E LOGIN -->
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -42,34 +46,39 @@
         <div class="navbar-collapse collapse">
           <!-- LOGIN -->
           <c:if test="${usuario == null}">
-          <form id="login-form" class="navbar-form navbar-right" role="form" method="post" action="<c:url value="/login" />">
-          	<c:if test="${not empty erroLogin}">
-            <p class="navbar-text bg-danger error-message">${erroLogin}</p>
+          <form id="login-form" class="navbar-form navbar-right" role="form" method="post" action="<c:url value='/' />">
+          	<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+            <p class="navbar-text bg-danger error-message">${SPRING_SECURITY_LAST_EXCEPTION.message}</p>
             </c:if>
             <div class="form-group">
-              <input type="text" name="nome-usuario" placeholder="Nome de usuário" class="form-control">
+              <input type="text" name="username" placeholder="Nome de usuário" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" name="senha" placeholder="Password" class="form-control">
+              <input type="password" name="password" placeholder="Password" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Entrar <span class="glyphicon glyphicon-log-in"></span></button>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
           </form>
           </c:if>
           <!-- MENU -->
-          <c:if test="${usuario != null}">
        	  <ul class="nav navbar-nav">
+	        <c:if test="${usuario != null}">
             <li class="${ param.active == 'entradas' ? 'active' : ''}"><a href="<c:url value="/entradas" />">Entradas</a></li>
+	        </c:if>
             <li class="${ param.active == 'sobre' ? 'active' : ''}"><a href="<c:url value="/sobre" />">Sobre</a></li>
           </ul>
+          <c:if test="${usuario != null}">
           <ul class="nav navbar-nav navbar-right">
           	<li><p class="navbar-text">Bom dia, ${usuario.nome}!</p></li>
-            <li><a href="<c:url value="/logout" />">Sair <span class="glyphicon glyphicon-log-out"></span></a></li>
+            <li><form role="form" method="post" action="<c:url value='/logout' />">
+            	<button class="btn btn-warning" title="Sair"><span class="glyphicon glyphicon-log-out"></span></button>
+            	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form></li>
           </ul>
           </c:if>
         </div>
       </div>
     </div>
-
 	
 	<!-- MENSAGENS -->
     <div class="container-fluid">
