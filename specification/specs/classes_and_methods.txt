@@ -30,9 +30,6 @@ Controllers
 	- MainController
 		- / (home - GET)
 		- /sobre (GET)
-	- LoginController
-		- /login (autenticar - POST - redireciona para /entradas)
-		- /logout (sair - POST - redireciona para /)
 	- EntradaController
 		- /entradas (listar - GET/POST)
 		- /entrada?new (incluir - GET/POST - redireciona para /entradas)
@@ -49,7 +46,7 @@ Views
 		- Entrada ativa do menu
 		- Título dinâmico
 		- Mensagens de erro e sucesso
-		- Mensagemd e bom dia
+		- Mensagem de bom dia
 		- Link logout
 	- Template Footer
 		- Caminhos de Javascripts devem estar com <c:url/>
