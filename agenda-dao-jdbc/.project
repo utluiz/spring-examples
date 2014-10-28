@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>agenda-dao-simples</name>
+	<name>agenda-dao-jdbc</name>
 	<comment></comment>
 	<projects>
 	</projects>
