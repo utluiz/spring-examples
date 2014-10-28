@@ -13,30 +13,39 @@ public class Entrada {
 	public Integer getId() {
 		return id;
 	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
 	public Date getHorario() {
 		return horario;
 	}
+	
 	public void setHorario(Date horario) {
 		this.horario = horario;
 	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
+	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
 	public Prioridade getPrioridade() {
 		return prioridade;
 	}
+	
 	public void setPrioridade(Prioridade prioridade) {
 		this.prioridade = prioridade;
 	}
+	
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}
+	
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
 	}

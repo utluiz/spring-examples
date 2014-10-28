@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
-import br.com.starcode.agenda.domain.PrioridadeEntrada;
+import br.com.starcode.agenda.domain.Prioridade;
 
 public class EntradaDao {
 	
@@ -39,7 +39,7 @@ public class EntradaDao {
 				e.setId(rs.getInt("id"));
 				e.setHorario(rs.getTimestamp("horario"));
 				e.setDescricao(rs.getString("descricao"));
-				e.setPrioridade(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
+				e.setPrioridade(Prioridade.fromCode(rs.getString("prioridade")));
 				e.setIdUsuario(rs.getInt("id_usuario"));
 				return e;
 			} else {
@@ -190,7 +190,7 @@ public class EntradaDao {
 				e.setId(rs.getInt("id"));
 				e.setHorario(rs.getTimestamp("horario"));
 				e.setDescricao(rs.getString("descricao"));
-				e.setPrioridade(PrioridadeEntrada.fromCode(rs.getString("prioridade")));
+				e.setPrioridade(Prioridade.fromCode(rs.getString("prioridade")));
 				e.setIdUsuario(rs.getInt("id_usuario"));
 				lista.add(e);
 			}

@@ -1,12 +1,12 @@
 package br.com.starcode.agenda.domain;
 
-public enum PrioridadeEntrada {
+public enum Prioridade {
 
 	Passatempo("P"), NadaDeMais("N"), PrecisaAtencao("A"), Importantissimo("I");
 	
 	private String code;
 	
-	private PrioridadeEntrada(String code) {
+	private Prioridade(String code) {
 		this.code = code;
 	}
 	
@@ -14,8 +14,8 @@ public enum PrioridadeEntrada {
 		return code;
 	}
 	
-	public static PrioridadeEntrada fromCode(String code) {
-		for (PrioridadeEntrada item : PrioridadeEntrada.values()) {
+	public static Prioridade fromCode(String code) {
+		for (Prioridade item : Prioridade.values()) {
 			if (item.getCode().equals(code)) {
 				return item;
 			}

@@ -8,26 +8,30 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
+import br.com.starcode.agenda.MySqlTestConfig;
+import br.com.starcode.agenda.dao.EntradaDao;
 import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
 import br.com.starcode.agenda.domain.Prioridade;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes={MySqlTestConfig.class})
+@Profile("test")
+@Transactional
 public class EntradaDaoTest {
 	
-	EntradaDao entradaDao;
+	@Autowired
+	protected EntradaDao entradaDao;
 	
-	@Before
-	public void setup() throws Exception {
-		
-		entradaDao = new EntradaDao();
-		entradaDao.setDataSource(TestSuite.getDataSource());
-		
-	}
-
 	@Test
 	public void findTest() throws Exception {
 		
@@ -58,7 +62,9 @@ public class EntradaDaoTest {
 		assertEquals(nova.getId(), entrada.getId());
 		assertEquals(new Integer(1), entrada.getIdUsuario());
 		assertEquals(Prioridade.NadaDeMais, entrada.getPrioridade());
-		assertEquals(horario, entrada.getHorario());
+		assertEquals(
+				new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(horario), 
+				new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(entrada.getHorario()));
 		
 		//atualiza
 		entrada.setDescricao("descrição nova 2");
@@ -70,7 +76,7 @@ public class EntradaDaoTest {
 		assertEquals("descrição nova 2", entrada.getDescricao());
 		
 		//remove
-		count = entradaDao.remove(entrada.getId());
+		count = entradaDao.delete(entrada.getId());
 		assertEquals(1, count);
 		
 		//verifica se removeu

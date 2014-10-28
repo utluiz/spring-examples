@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
-import br.com.starcode.agenda.domain.PrioridadeEntrada;
+import br.com.starcode.agenda.domain.Prioridade;
 import br.com.starcode.agenda.domain.Usuario;
 import br.com.starcode.agenda.service.EntradaService;
 import br.com.starcode.agenda.util.DateUtil;
@@ -46,7 +46,7 @@ public class EntradaController {
 	ModelAndView nova() {
 		Entrada entrada = new Entrada();
 		entrada.setHorario(new Date());
-		entrada.setPrioridade(PrioridadeEntrada.NadaDeMais);
+		entrada.setPrioridade(Prioridade.NadaDeMais);
 		return new ModelAndView("editar-entrada")
 				.addObject("entrada", entrada);
 	}
