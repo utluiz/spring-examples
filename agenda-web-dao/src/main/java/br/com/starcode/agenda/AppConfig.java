@@ -17,8 +17,8 @@ public class AppConfig {
 	DataSource dataSourceMySql() {
 		MysqlDataSource ds = new MysqlDataSource();
 		ds.setUrl("jdbc:mysql://localhost:3311/agenda");
-		ds.setPassword("root");
 		ds.setUser("root");
+		ds.setPassword("root");
 		return ds;
 	}
 	
