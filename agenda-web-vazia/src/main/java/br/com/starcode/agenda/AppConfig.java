@@ -14,14 +14,14 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 public class AppConfig {
 
 	@Bean 
-	public DataSource dataSourceMySql() {
+	DataSource dataSourceMySql() {
 		MysqlDataSource ds = new MysqlDataSource();
 		ds.setUrl("jdbc:mysql://localhost:3311/agenda");
 		ds.setUser("root");
 		ds.setPassword("root");
 		return ds;
 	}
-
+	
 	@Bean
 	JdbcTemplate getTemplate(DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
