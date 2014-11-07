@@ -18,7 +18,6 @@ public class DateUtil {
 	}
 	
 	public static Date mergeWithHour(Date date, String hour) {
-		
 		if (hour == null || hour.isEmpty()) {
 			throw new RuntimeException("Hora inválida!");
 		}
@@ -34,7 +33,6 @@ public class DateUtil {
 		c.set(Calendar.MINUTE, Integer.parseInt(parts[1]));
 		
 		return c.getTime();
-		
 	}
 
 }

@@ -1,9 +1,12 @@
 package br.com.starcode.agenda.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Usuario {
+public class Usuario implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String nomeUsuario;
 	private String senha;

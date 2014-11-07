@@ -4,10 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -23,8 +22,8 @@ import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
 import br.com.starcode.agenda.domain.Prioridade;
-import br.com.starcode.agenda.domain.Usuario;
 import br.com.starcode.agenda.service.EntradaService;
+import br.com.starcode.agenda.util.AgendaUserDetails;
 import br.com.starcode.agenda.util.DateUtil;
 
 @Controller
@@ -72,15 +71,11 @@ public class EntradaController {
 	ModelAndView confirmarNova(
 			Entrada entrada,
 			@RequestParam("hora") String horario,
-			HttpSession sessao, 
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes,
+			@AuthenticationPrincipal AgendaUserDetails user) {
 		try {
-			//prepare 
-			Usuario usuario = (Usuario) sessao.getAttribute("usuario");
-			if (usuario == null) {
-				throw new RuntimeException("Usuário não autenticado");
-			}
-			entrada.setIdUsuario(usuario.getId());
+			//prepare entrada
+			entrada.setIdUsuario(user.getUsuario().getId());
 			entrada.setHorario(DateUtil.mergeWithHour(entrada.getHorario(), horario));
 			//insert 
 			entradaService.insert(entrada);
@@ -97,15 +92,11 @@ public class EntradaController {
 	ModelAndView confirmarEdicao(
 			Entrada entrada,
 			@RequestParam("hora") String horario,
-			HttpSession sessao,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes,
+			@AuthenticationPrincipal AgendaUserDetails user) {
 		try {
-			//prepared entrada
-			Usuario usuario = (Usuario) sessao.getAttribute("usuario");
-			if (usuario == null) {
-				throw new RuntimeException("Usuário não autenticado");
-			}
-			entrada.setIdUsuario(usuario.getId());
+			//prepare entrada
+			entrada.setIdUsuario(user.getUsuario().getId());
 			entrada.setHorario(DateUtil.mergeWithHour(entrada.getHorario(), horario));
 			//update
 			entradaService.update(entrada);

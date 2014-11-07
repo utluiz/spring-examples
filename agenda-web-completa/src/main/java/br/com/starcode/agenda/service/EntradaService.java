@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.starcode.agenda.dao.EntradaDao;
-import br.com.starcode.agenda.dao.UsuarioDao;
 import br.com.starcode.agenda.domain.Entrada;
 import br.com.starcode.agenda.domain.FiltroEntrada;
 import br.com.starcode.agenda.domain.OrdenacaoEntrada;
@@ -16,9 +15,6 @@ public class EntradaService {
 
 	@Autowired
 	EntradaDao entradaDao;
-	
-	@Autowired
-	UsuarioDao usuarioDao;
 	
 	public Entrada findById(Integer id) {
 		return entradaDao.findById(id);
