@@ -16,9 +16,9 @@ public class AppConfig {
 	@Bean 
 	DataSource dataSourceMySql() {
 		MysqlDataSource ds = new MysqlDataSource();
-		ds.setUrl("jdbc:mysql://localhost:3311/agenda");
+		ds.setUrl("jdbc:mysql://localhost/agenda");
 		ds.setUser("root");
-		ds.setPassword("root");
+		ds.setPassword("");
 		return ds;
 	}
 	

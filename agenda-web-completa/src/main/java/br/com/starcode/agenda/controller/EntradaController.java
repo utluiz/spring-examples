@@ -26,6 +26,13 @@ import br.com.starcode.agenda.service.EntradaService;
 import br.com.starcode.agenda.util.AgendaUserDetails;
 import br.com.starcode.agenda.util.DateUtil;
 
+/**
+ * VIEW -> JSP
+ * CONTROLLERS
+ * SERVICES 
+ * REPOSITORY
+ * JPA / DAO
+ */
 @Controller
 public class EntradaController {
 	
@@ -50,9 +57,9 @@ public class EntradaController {
 				.addObject("entrada", entrada);
 	}
 
-	@RequestMapping(value="/entrada/{id}")
+	@RequestMapping(value="/{escritorio}/login")
 	ModelAndView editar(
-			@PathVariable("id") Integer id, 
+			@PathVariable("escritorio") Integer id, 
 			RedirectAttributes redirectAttributes) {
 		try {
 			Entrada entrada = entradaService.findById(id);

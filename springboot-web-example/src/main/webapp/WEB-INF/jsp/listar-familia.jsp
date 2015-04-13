@@ -6,12 +6,17 @@
 <html lang="pt">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Dino JSP</title>
+  <title>Dino Family JSP</title>
 </head>
 <body>
 
-  <h1>${msg}</h1>
-  <a href="ver-familia">Próxima</a>
+<h1>Dino Family</h1>
+
+<ul>
+	<c:forEach items="${family}" var="nome">
+		<li>${nome}</li>
+	</c:forEach>
+</ul>
 
 </body>
 </html>
