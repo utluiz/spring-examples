@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: Agenda Web Completa com Spring Boot
+Implementation-Version: 1.0
+Built-By: Luiz Ricardo
+Implementation-Vendor-Id: br.com.starcode.agenda
+Build-Jdk: 1.8.0_31
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
