@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.starcode.agenda.dao.EntradaDao;
-import br.com.starcode.agenda.domain.Entrada;
-import br.com.starcode.agenda.domain.FiltroEntrada;
-import br.com.starcode.agenda.domain.OrdenacaoEntrada;
+import br.com.starcode.agenda.model.Entrada;
+import br.com.starcode.agenda.model.FiltroEntrada;
+import br.com.starcode.agenda.model.OrdenacaoEntrada;
 
 @Service
 public class EntradaService {
@@ -36,13 +36,13 @@ public class EntradaService {
 		validarEntrada(entrada);
 		int qtd = entradaDao.update(entrada);
 		if (qtd == 0) {
-			throw new RuntimeException("Registro '" + entrada.getId() + "' não encontrado para remoção!");
+			throw new RuntimeException("Registro '" + entrada.getId() + "' não encontrado para !");
 		}
 		return qtd;
 	}
 	
 	public int delete(Integer id) {
-		int qtd = entradaDao.delete(id);
+		int qtd = entradaDao.remove(id);
 		if (qtd == 0) {
 			throw new RuntimeException("Registro '" + id + "' não encontrado para remoção!");
 		}

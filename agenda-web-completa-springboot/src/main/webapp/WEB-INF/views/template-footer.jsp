@@ -4,7 +4,7 @@
     
     <footer>
       <hr>
-      <p>&copy; [Sua Empresa] 2014</p>
+      <p>&copy; [Sua Empresa] 2015</p>
     </footer>
 	
 	<!-- Placed at the end of the document so the pages load faster -->

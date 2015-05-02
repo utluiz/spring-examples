@@ -41,15 +41,14 @@
         <div class="navbar-collapse collapse">
           <!-- LOGIN -->
           <c:if test="${usuario == null}">
-          <form id="login-form" class="navbar-form navbar-right" role="form" method="post" action="<c:url value='/' />">
+          <form id="login-form" class="navbar-form navbar-right" role="form" method="post" action="<c:url value='/login' />">
             <div class="form-group">
-              <input type="text" name="username" placeholder="Nome de usuário" class="form-control">
+              <input type="text" name="nomeUsuario" placeholder="Nome de usuário" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" name="password" placeholder="Password" class="form-control">
+              <input type="password" name="senha" placeholder="Password" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Entrar <span class="glyphicon glyphicon-log-in"></span></button>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
           </form>
           </c:if>
           <!-- MENU -->
@@ -64,7 +63,6 @@
           	<li><p class="navbar-text">Bom dia, ${usuario.nome}!</p></li>
             <li><form role="form" method="post" action="<c:url value='/logout' />">
             	<button class="btn btn-warning" title="Sair"><span class="glyphicon glyphicon-log-out"></span></button>
-            	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form></li>
           </ul>
           </c:if>

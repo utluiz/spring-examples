@@ -1,4 +1,4 @@
-package br.com.starcode.agenda.domain;
+package br.com.starcode.agenda.model;
 
 import java.io.Serializable;
 import java.util.Date;

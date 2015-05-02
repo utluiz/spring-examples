@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.starcode.agenda.dao.UsuarioDao;
-import br.com.starcode.agenda.domain.Usuario;
+import br.com.starcode.agenda.model.Usuario;
 
 @Service
 public class UsuarioService {
